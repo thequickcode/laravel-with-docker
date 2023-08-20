@@ -1,0 +1,29 @@
+services:
+  nginx:
+    ports:
+      - 80:80
+    build: nginx
+    restart: unless-stopped
+    volumes:
+      - ./backend:/app:rw
+    depends_on:
+      - php
+  php:
+    image: php:fpm-alpine
+    build: php
+    restart: unless-stopped
+    volumes:
+      - ./backend:/app:rw
+    depends_on:
+      - mysql
+  mysql:
+    image: "mysql/mysql-server:8.0"
+    restart: unless-stopped
+    volumes:
+      - "./db:/var/lib/mysql"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_DATABASE: "${DB_DATABASE}"
+      MYSQL_USER: "${DB_USERNAME}"
+      MYSQL_PASSWORD: "${DB_PASSWORD}"

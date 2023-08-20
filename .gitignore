@@ -2,8 +2,6 @@
 
 .env
 
-backend/*
-
 db
 
 **DS_Store

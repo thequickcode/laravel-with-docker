@@ -1,7 +1,5 @@
 *.zip
 
-.env
-
 db
 
 **DS_Store

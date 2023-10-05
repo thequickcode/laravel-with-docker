@@ -26,7 +26,7 @@ RUN curl -sSLf \
         chmod +x /usr/local/bin/install-php-extensions
 
 # Install php extensions
-RUN install-php-extensions gd imagick pdo_mysql imap intl bcmath
+RUN install-php-extensions gd imagick pdo_mysql imap intl bcmath zip
 
 # Configure supervisor
 RUN mkdir -p /etc/supervisor.d/

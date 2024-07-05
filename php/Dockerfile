@@ -7,6 +7,10 @@ COPY php.ini-production /php.ini
 RUN cp /php.ini $PHP_INI_DIR/php.ini && \
         rm /php.ini
 
+ENV PHP_OPCACHE_VALIDATE_TIMESTAMPS="0"
+
+ADD opcache.ini "$PHP_INI_DIR/conf.d/opcache.ini"
+
 RUN apk update --no-cache && \
         apk add --no-cache \
                 supervisor \

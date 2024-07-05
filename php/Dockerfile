@@ -1,4 +1,4 @@
-FROM php:fpm-alpine 
+FROM php:8.3-fpm-alpine 
 
 WORKDIR /app
 
@@ -30,7 +30,7 @@ RUN curl -sSLf \
         chmod +x /usr/local/bin/install-php-extensions
 
 # Install php extensions
-RUN install-php-extensions gd imagick pdo_mysql imap intl bcmath zip opcache mysql
+RUN install-php-extensions gd imagick pdo_mysql imap intl bcmath zip opcache
 
 # Configure supervisor
 RUN mkdir -p /etc/supervisor.d/
